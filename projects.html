@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects — Leonardo Cabrera</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;1,9..144,400&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --coral: #e8522a; --coral-lt: #fff0eb;
+    --blue: #2563eb; --blue-lt: #eff6ff;
+    --teal: #1a7f74; --teal-lt: #e0f5f2;
+    --text: #1c1917; --muted: #6b7280;
+    --border: #e5e7eb; --bg: #fafaf9;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg); color: var(--text); }
+
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(250,250,249,0.92); backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+    padding: 0.75rem 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-logo { font-family: 'Fraunces', serif; font-size: 1.05rem; font-weight: 700; color: var(--coral); text-decoration: none; }
+  .nav-links { display: flex; gap: 1.5rem; list-style: none; }
+  .nav-links a { text-decoration: none; font-size: 0.875rem; font-weight: 500; color: var(--muted); transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--coral); }
+
+  /* PAGE HEADER */
+  .page-header { max-width: 860px; margin: 2.5rem auto 1.5rem; padding: 0 2rem; }
+  .page-header h1 { font-family: 'Fraunces', serif; font-size: 2rem; font-weight: 700; color: var(--text); margin-bottom: 0.4rem; }
+  .page-header h1 span { color: var(--coral); }
+  .page-header p { font-size: 0.9rem; color: var(--muted); }
+
+  /* PROJECT WRAPPER */
+  .project-wrap { max-width: 860px; margin: 0 auto 4rem; padding: 0 2rem; }
+
+  /* PROJECT CARD */
+  .project-block {
+    background: #fff; border-radius: 20px; border: 1.5px solid var(--border);
+    overflow: hidden; margin-bottom: 2rem;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.05);
+  }
+  .project-info { padding: 1.75rem 2rem 1.25rem; border-bottom: 1px solid var(--border); }
+  .project-info-top { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 0.75rem; }
+  .project-name { font-family: 'Fraunces', serif; font-size: 1.3rem; font-weight: 700; color: var(--text); }
+  .project-badge { font-size: 0.72rem; font-weight: 600; padding: 4px 12px; border-radius: 20px; background: var(--blue-lt); color: var(--blue); border: 1.5px solid #bfdbfe; }
+  .project-byline { font-size: 0.8rem; color: var(--muted); margin-bottom: 0.75rem; }
+  .project-desc { font-size: 0.85rem; color: #44403c; line-height: 1.65; margin-bottom: 1rem; }
+  .project-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag { font-size: 0.72rem; font-weight: 600; padding: 4px 10px; border-radius: 20px; border: 1.5px solid transparent; }
+  .ta { background: var(--coral-lt); color: var(--coral); border-color: #fdc5b0; }
+  .tb { background: var(--teal-lt); color: var(--teal); border-color: #99d9d3; }
+  .tc { background: #fef3c7; color: #d97706; border-color: #fcd34d; }
+  .td { background: var(--blue-lt); color: var(--blue); border-color: #bfdbfe; }
+  .te { background: #fdf4ff; color: #c026d3; border-color: #e879f9; }
+
+  /* SLIDESHOW */
+  .slideshow { position: relative; background: #0f172a; }
+  .slides-container { position: relative; width: 100%; }
+  .slide { display: none; }
+  .slide.active { display: block; }
+  .slide img {
+    width: 100%; display: block;
+    aspect-ratio: 16/9; object-fit: cover;
+  }
+
+  /* SLIDE CONTROLS */
+  .slide-controls {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0.75rem 1.25rem;
+    background: #0f172a;
+  }
+  .slide-btn {
+    background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15);
+    color: #fff; padding: 6px 16px; border-radius: 20px;
+    font-size: 0.8rem; font-weight: 600; cursor: pointer;
+    transition: background 0.15s; font-family: inherit;
+  }
+  .slide-btn:hover { background: rgba(255,255,255,0.2); }
+  .slide-btn:disabled { opacity: 0.3; cursor: default; }
+  .slide-counter { font-size: 0.8rem; color: rgba(255,255,255,0.6); font-weight: 500; }
+  .slide-dots { display: flex; gap: 6px; align-items: center; }
+  .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: rgba(255,255,255,0.25); cursor: pointer;
+    transition: background 0.15s, transform 0.15s;
+    border: none;
+  }
+  .dot.active { background: var(--coral); transform: scale(1.3); }
+
+  /* DOWNLOAD LINK */
+  .download-row { padding: 1rem 2rem; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; }
+  .download-note { font-size: 0.78rem; color: var(--muted); }
+  .download-btn {
+    font-size: 0.8rem; font-weight: 600; padding: 6px 16px;
+    border-radius: 20px; background: var(--coral); color: #fff;
+    text-decoration: none; transition: opacity 0.15s;
+  }
+  .download-btn:hover { opacity: 0.85; }
+
+  @media (max-width: 600px) {
+    .slide-dots { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">My Professional Portfolio</a>
+  <ul class="nav-links">
+    <li><a href="index.html#experience">Experience</a></li>
+    <li><a href="projects.html" class="active">Projects</a></li>
+    <li><a href="index.html#education">Education</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="page-header">
+  <h1>My <span>Projects</span></h1>
+  <p>Case studies and applied work from my localization career and graduate studies.</p>
+</div>
+
+<div class="project-wrap">
+
+  <div class="project-block">
+    <div class="project-info">
+      <div class="project-info-top">
+        <div class="project-name">🎮 Enterprise TMS Implementation — FrostStorm Games</div>
+        <span class="project-badge">TMS Evaluation</span>
+      </div>
+      <div class="project-byline">Middlebury Institute of International Studies · Team project with Shruti Shekhadar & Heling Li · 2025–2026</div>
+      <div class="project-desc">
+        Led a team of three localization specialists to evaluate and recommend an enterprise-grade Translation Management System for a fictional live-service game studio. The project simulated a real-world procurement process: mapping 7 key stakeholder requirements, designing a controlled pilot test comparing Phrase vs memoQ Enterprise, and producing a data-driven final recommendation. memoQ Enterprise won with a weighted score of 4.55 vs 3.95, driven by superior IP protection, terminology management, and LQA hard-stops.
+      </div>
+      <div class="project-tags">
+        <span class="tag td">memoQ Enterprise</span>
+        <span class="tag tc">Phrase</span>
+        <span class="tag ta">TMS Evaluation</span>
+        <span class="tag tb">Terminology Management</span>
+        <span class="tag te">LQA Automation</span>
+        <span class="tag td">Game Localization</span>
+        <span class="tag ta">Vendor Management</span>
+      </div>
+    </div>
+
+    <!-- SLIDESHOW -->
+    <div class="slideshow">
+      <div class="slides-container" id="slideshow1">
+        <div class="slide active"><img src="https://leonardocab96-sketch.github.io/leonardoportfolio/slide-1.jpg" alt="Slide 1 — Title"></div>
+        <div class="slide"><img src="https://leonardocab96-sketch.github.io/leonardoportfolio/slide-2.jpg" alt="Slide 2 — Business Need"></div>
+        <div class="slide"><img src="https://leonardocab96-sketch.github.io/leonardoportfolio/slide-3.jpg" alt="Slide 3 — Stakeholder Requirements"></div>
+        <div class="slide"><img src="https://leonardocab96-sketch.github.io/leonardoportfolio/slide-4.jpg" alt="Slide 4 — Pilot Design"></div>
+        <div class="slide"><img src="https://leonardocab96-sketch.github.io/leonardoportfolio/slide-5.jpg" alt="Slide 5 — Comparative Analysis"></div>
+        <div class="slide"><img src="https://leonardocab96-sketch.github.io/leonardoportfolio/slide-6.jpg" alt="Slide 6 — Recommendation"></div>
+        <div class="slide"><img src="https://leonardocab96-sketch.github.io/leonardoportfolio/slide-7.jpg" alt="Slide 7 — Thank You"></div>
+      </div>
+      <div class="slide-controls">
+        <button class="slide-btn" id="prev1" onclick="changeSlide('slideshow1', -1)" disabled>← Prev</button>
+        <div style="display:flex; align-items:center; gap:1rem;">
+          <div class="slide-dots" id="dots1"></div>
+          <span class="slide-counter" id="counter1">1 / 7</span>
+        </div>
+        <button class="slide-btn" id="next1" onclick="changeSlide('slideshow1', 1)">Next →</button>
+      </div>
+    </div>
+
+    <div class="download-row">
+      <span class="download-note">View the full presentation</span>
+      <a class="download-btn" href="https://leonardocab96-sketch.github.io/leonardoportfolio/TMS_Selection_Assignment.pdf" target="_blank">Download PDF ↗</a>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  const state = {};
+
+  function init(id, total) {
+    state[id] = { current: 0, total };
+    const dotsEl = document.getElementById('dots' + id.replace('slideshow',''));
+    for (let i = 0; i < total; i++) {
+      const d = document.createElement('button');
+      d.className = 'dot' + (i === 0 ? ' active' : '');
+      d.onclick = () => goToSlide(id, i);
+      dotsEl.appendChild(d);
+    }
+  }
+
+  function goToSlide(id, index) {
+    const s = state[id];
+    const container = document.getElementById(id);
+    const slides = container.querySelectorAll('.slide');
+    const num = id.replace('slideshow','');
+    const dots = document.getElementById('dots' + num).querySelectorAll('.dot');
+
+    slides[s.current].classList.remove('active');
+    dots[s.current].classList.remove('active');
+    s.current = index;
+    slides[s.current].classList.add('active');
+    dots[s.current].classList.add('active');
+    document.getElementById('counter' + num).textContent = `${s.current + 1} / ${s.total}`;
+    document.getElementById('prev' + num).disabled = s.current === 0;
+    document.getElementById('next' + num).disabled = s.current === s.total - 1;
+  }
+
+  function changeSlide(id, dir) {
+    const s = state[id];
+    const next = s.current + dir;
+    if (next >= 0 && next < s.total) goToSlide(id, next);
+  }
+
+  // Init all slideshows
+  init('slideshow1', 7);
+
+  // Keyboard navigation
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight') changeSlide('slideshow1', 1);
+    if (e.key === 'ArrowLeft') changeSlide('slideshow1', -1);
+  });
+</script>
+
+</body>
+</html>
