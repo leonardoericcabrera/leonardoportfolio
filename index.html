@@ -1,389 +1,247 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Leonardo Cabrera — Translation & Localization Manager</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;1,9..144,400&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Leonardo Cabrera — Translation & Localization Manager</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<style>
+			/* Custom overrides to match Leo's coral palette */
+			:root { --coral: #e8522a; }
+			#header { background-color: #1a1f2e; }
+			#header .inner h1 strong { color: var(--coral); }
+			a { color: var(--coral); }
+			input[type="submit"].primary, .button.primary { background-color: var(--coral) !important; }
+			.skill-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 0.5em; }
+			.skill-tag {
+				font-size: 0.75em; padding: 4px 12px; border-radius: 20px;
+				border: 1px solid #ddd; background: #fff; color: #555;
+				display: inline-block;
+			}
+			.exp-date {
+				font-size: 0.75em; color: var(--coral);
+				font-weight: 600; display: block; margin-bottom: 0.25em;
+			}
+			.exp-bullets { margin: 0.5em 0 0 1.2em; padding: 0; }
+			.exp-bullets li { font-size: 0.9em; margin-bottom: 4px; color: #555; }
+			.stats-row { display: flex; gap: 1.5em; flex-wrap: wrap; margin-bottom: 1.5em; }
+			.stat-box { text-align: center; }
+			.stat-num { font-size: 2em; font-weight: 700; color: var(--coral); line-height: 1; display: block; }
+			.stat-label { font-size: 0.7em; color: #999; text-transform: uppercase; letter-spacing: 0.08em; }
+			.proj-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1em; margin-bottom: 1.5em; }
+			.proj-card {
+				border: 1px solid #e0e0e0; border-radius: 8px;
+				padding: 1.2em; text-decoration: none; color: inherit;
+				display: block; transition: border-color 0.2s, box-shadow 0.2s;
+				background: #fff;
+			}
+			.proj-card:hover { border-color: var(--coral); box-shadow: 0 3px 12px rgba(0,0,0,0.08); color: inherit; }
+			.proj-card h4 { margin: 0.3em 0 0.4em; font-size: 0.95em; color: #333; }
+			.proj-card p { font-size: 0.8em; color: #777; margin: 0 0 0.6em; line-height: 1.5; }
+			.proj-card .proj-link { font-size: 0.75em; color: var(--coral); font-weight: 600; }
+			.proj-emoji { font-size: 1.5em; }
+			section.exp-section { margin-bottom: 1.5em; border-left: 3px solid var(--coral); padding-left: 1em; }
+			@media (max-width: 640px) {
+				.proj-grid { grid-template-columns: 1fr; }
+				.stats-row { gap: 1em; }
+			}
+		</style>
+	</head>
+	<body class="is-preload">
 
-  :root {
-    --coral: #e8522a;
-    --coral-lt: #fff0eb;
-    --teal: #1a7f74;
-    --teal-lt: #e0f5f2;
-    --amber: #d97706;
-    --amber-lt: #fef3c7;
-    --blue: #2563eb;
-    --blue-lt: #eff6ff;
-    --pink: #c026d3;
-    --pink-lt: #fdf4ff;
-    --text: #1c1917;
-    --muted: #6b7280;
-    --border: #e5e7eb;
-    --bg: #fafaf9;
-  }
+		<!-- Header -->
+		<header id="header">
+			<div class="inner">
+				<a href="#" class="image avatar">
+					<img src="https://leonardocab96-sketch.github.io/leonardoportfolio/profile_pic.jpg" alt="Leonardo Cabrera" />
+				</a>
+				<h1><strong>Leonardo Cabrera</strong><br />
+				Translation &amp; Localization Manager<br />
+				<span style="font-size:0.8em; color:rgba(255,255,255,0.5);">Monterey, CA</span></h1>
+			</div>
+		</header>
 
-  html { scroll-behavior: smooth; }
+		<!-- Main -->
+		<div id="main">
 
-  body {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.6;
-  }
+			<!-- Intro -->
+			<section id="one">
+				<header class="major">
+					<h2>Connecting people and ideas across languages,<br />
+					making every word land with precision and purpose.</h2>
+				</header>
 
-  /* NAV */
-  nav {
-    position: sticky; top: 0; z-index: 100;
-    background: rgba(250,250,249,0.92);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--border);
-    padding: 0.75rem 2rem;
-    display: flex; align-items: center; justify-content: space-between;
-  }
-  .nav-logo { font-family: 'Fraunces', serif; font-size: 1.15rem; font-weight: 700; color: var(--coral); letter-spacing: -0.01em; }
-  .nav-links { display: flex; gap: 1.5rem; list-style: none; }
-  .nav-links a { text-decoration: none; font-size: 0.875rem; font-weight: 500; color: var(--muted); transition: color 0.2s; }
-  .nav-links a:hover { color: var(--coral); }
+				<div class="stats-row">
+					<div class="stat-box"><span class="stat-num">6+</span><span class="stat-label">Languages managed</span></div>
+					<div class="stat-box"><span class="stat-num">20–25</span><span class="stat-label">Daily requests</span></div>
+					<div class="stat-box"><span class="stat-num">4</span><span class="stat-label">Localization roles</span></div>
+					<div class="stat-box"><span class="stat-num">M.A.</span><span class="stat-label">TLM in progress</span></div>
+				</div>
 
-  /* HERO */
-  .hero { position: relative; overflow: hidden; min-height: 520px; }
-  .hero-banner {
-    width: 100%; height: 480px; object-fit: cover; object-position: center 80%;
-    display: block;
-  }
-  .hero-banner-overlay {
-    position: absolute; top: 0; left: 0; right: 0; height: 480px;
-    background: linear-gradient(to bottom, rgba(28,25,23,0.15) 0%, rgba(28,25,23,0.55) 100%);
-  }
-  .hero-card {
-    position: relative;
-    max-width: 860px; margin: 0 auto;
-    padding: 0 2rem;
-    margin-top: -180px;
-  }
-  .hero-inner {
-    background: #fff;
-    border-radius: 20px;
-    border: 1.5px solid var(--border);
-    padding: 2rem 2.5rem;
-    display: flex; gap: 2rem; align-items: flex-start;
-    box-shadow: 0 4px 32px rgba(0,0,0,0.08);
-  }
-  .hero-photo {
-    width: 150px; height: 150px; border-radius: 50%;
-    object-fit: cover; object-position: center top;
-    border: 4px solid #fff;
-    box-shadow: 0 2px 16px rgba(0,0,0,0.12);
-    flex-shrink: 0;
-    margin-top: -4.5rem;
-  }
-  .hero-info { flex: 1; }
-  .hero-name { font-family: 'Fraunces', serif; font-size: 2.2rem; font-weight: 700; line-height: 1.1; color: var(--text); margin-bottom: 0.25rem; }
-  .hero-name span { color: var(--coral); }
-  .hero-role { font-size: 0.95rem; color: var(--muted); margin-bottom: 0.75rem; font-weight: 500; }
-  .hero-tagline {
-    font-family: 'Fraunces', serif; font-style: italic;
-    font-size: 1.05rem; color: #44403c; line-height: 1.5;
-    border-left: 3px solid var(--coral); padding-left: 1rem;
-    margin-bottom: 1rem;
-  }
-  .hero-lang-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 1rem; }
-  .lang-pill { font-size: 0.72rem; font-weight: 600; padding: 3px 10px; border-radius: 20px; letter-spacing: 0.03em; }
-  .lp-es { background: #fef9c3; color: #854d0e; }
-  .lp-en { background: #dbeafe; color: #1e40af; }
-  .lp-kek { background: #dcfce7; color: #166534; }
-  .lp-ar { background: #ede9fe; color: #5b21b6; }
-  .lp-gn { background: #fce7f3; color: #9d174d; }
-  .lp-fa { background: #ffedd5; color: #9a3412; }
-  .hero-contacts { display: flex; gap: 1rem; flex-wrap: wrap; }
-  .hero-contact-link {
-    font-size: 0.8rem; font-weight: 500; color: var(--muted);
-    text-decoration: none; display: flex; align-items: center; gap: 4px;
-    transition: color 0.2s;
-  }
-  .hero-contact-link:hover { color: var(--coral); }
+				<p>Multilingual localization professional experienced in translation workflows, vendor coordination, and multilingual content production. Skilled in TMS platforms, CAT tools, and multilingual project support. Currently completing a Master's degree in Translation and Localization Management at the Middlebury Institute of International Studies.</p>
 
-  /* STATS */
-  .stats-section { max-width: 860px; margin: 1.5rem auto; padding: 0 2rem; }
-  .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
-  .stat-box {
-    background: #fff; border-radius: 14px; border: 1.5px solid var(--border);
-    padding: 1rem 1.25rem; text-align: center;
-    transition: transform 0.15s, border-color 0.15s;
-  }
-  .stat-box:hover { transform: translateY(-2px); border-color: var(--coral); }
-  .stat-num { font-family: 'Fraunces', serif; font-size: 1.9rem; font-weight: 700; color: var(--coral); line-height: 1; }
-  .stat-label { font-size: 0.72rem; color: var(--muted); margin-top: 4px; font-weight: 500; }
+				<div class="skill-tags">
+					<span class="skill-tag">Trados Studio ✦ L2</span>
+					<span class="skill-tag">Phrase</span>
+					<span class="skill-tag">WorldServer</span>
+					<span class="skill-tag">Plunet</span>
+					<span class="skill-tag">memoQ</span>
+					<span class="skill-tag">Jira</span>
+					<span class="skill-tag">ElevenLabs</span>
+					<span class="skill-tag">Adobe Audition</span>
+					<span class="skill-tag">Localization PM</span>
+					<span class="skill-tag">Vendor Coordination</span>
+					<span class="skill-tag">Quality Assurance</span>
+					<span class="skill-tag">MT Post-editing</span>
+					<span class="skill-tag">CAT Tools</span>
+					<span class="skill-tag">A/V Localization</span>
+					<span class="skill-tag">Multilingual Workflows</span>
+					<span class="skill-tag">HTML · CSS · Python</span>
+				</div>
+			</section>
 
-  /* MAIN LAYOUT */
-  .main { max-width: 860px; margin: 0 auto; padding: 0 2rem 4rem; }
-  .two-col { display: grid; grid-template-columns: 1fr 300px; gap: 1.5rem; align-items: start; }
+			<!-- Experience -->
+			<section id="experience">
+				<h2>Experience</h2>
 
-  /* SECTION HEADING */
-  .section-heading {
-    font-family: 'Fraunces', serif; font-size: 1.25rem; font-weight: 700;
-    color: var(--text); margin-bottom: 1rem;
-    display: flex; align-items: center; gap: 8px;
-  }
-  .section-heading::after { content: ''; flex: 1; height: 1.5px; background: var(--border); }
+				<div class="exp-section">
+					<span class="exp-date">Nov 2024 – Aug 2025</span>
+					<h3 style="margin:0 0 2px;">Language Coordinator</h3>
+					<p style="margin:0 0 0.5em; color:#888; font-size:0.9em;">The Church of Jesus Christ of Latter-day Saints · Salt Lake City, UT</p>
+					<ul class="exp-bullets">
+						<li>Managed multilingual translation workflows across Spanish, Kekchi, Guaraní, Arabic, and Persian</li>
+						<li>Assigned and tracked 20–25 translation requests daily using Plunet TMS</li>
+						<li>Coordinated vendor assignments through WorldServer</li>
+						<li>Recruited and scheduled interpreters for live interpretation events</li>
+					</ul>
+				</div>
 
-  /* EXPERIENCE */
-  .exp-list { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 1.5rem; }
-  .exp-card {
-    background: #fff; border-radius: 14px; border: 1.5px solid var(--border);
-    padding: 1.25rem 1.5rem; position: relative; overflow: hidden;
-    transition: box-shadow 0.2s;
-  }
-  .exp-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.07); }
-  .exp-card::before {
-    content: ''; position: absolute; left: 0; top: 0; bottom: 0;
-    width: 4px; background: var(--accent, var(--coral));
-  }
-  .exp-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; flex-wrap: wrap; }
-  .exp-title { font-weight: 600; font-size: 0.95rem; color: var(--text); }
-  .exp-company { font-size: 0.82rem; color: var(--muted); margin-top: 2px; }
-  .exp-date { font-size: 0.72rem; font-weight: 600; padding: 3px 10px; border-radius: 20px; background: var(--coral-lt); color: var(--coral); white-space: nowrap; flex-shrink: 0; }
-  .exp-bullets { margin-top: 0.75rem; padding-left: 1rem; }
-  .exp-bullets li { font-size: 0.82rem; color: #44403c; margin-bottom: 3px; line-height: 1.5; }
+				<div class="exp-section">
+					<span class="exp-date">May – Aug 2024</span>
+					<h3 style="margin:0 0 2px;">Translation Project Manager</h3>
+					<p style="margin:0 0 0.5em; color:#888; font-size:0.9em;">Brigham Young University (BYU Speeches) · Provo, UT</p>
+					<ul class="exp-bullets">
+						<li>Coordinated multilingual content workflows across four languages</li>
+						<li>Managed translation teams and tracked project milestones</li>
+						<li>Monitored project status and dependencies using Jira</li>
+						<li>Communicated timelines and goals to stakeholders</li>
+					</ul>
+				</div>
 
-  /* SIDEBAR */
-  .sidebar-card { background: #fff; border-radius: 14px; border: 1.5px solid var(--border); padding: 1.25rem 1.5rem; margin-bottom: 1rem; }
-  .tool-chips { display: flex; flex-wrap: wrap; gap: 6px; }
-  .tool-chip { font-size: 0.72rem; font-weight: 600; padding: 4px 10px; border-radius: 20px; border: 1.5px solid transparent; }
-  .tc-a { background: var(--coral-lt); color: var(--coral); border-color: #fdc5b0; }
-  .tc-b { background: var(--teal-lt); color: var(--teal); border-color: #99d9d3; }
-  .tc-c { background: var(--amber-lt); color: var(--amber); border-color: #fcd34d; }
-  .tc-d { background: var(--blue-lt); color: var(--blue); border-color: #bfdbfe; }
-  .tc-e { background: var(--pink-lt); color: var(--pink); border-color: #e879f9; }
+				<div class="exp-section">
+					<span class="exp-date">Sep 2023 – Apr 2024</span>
+					<h3 style="margin:0 0 2px;">Spanish Translator</h3>
+					<p style="margin:0 0 0.5em; color:#888; font-size:0.9em;">Brigham Young University (BYU Speeches) · Provo, UT</p>
+					<ul class="exp-bullets">
+						<li>Translated speeches and forum content using Trados Studio (Level 2 Certified)</li>
+						<li>Produced multilingual audio content with ElevenLabs AI voiceover</li>
+						<li>Edited recordings in Adobe Audition and GarageBand; published via WordPress & YouTube</li>
+					</ul>
+				</div>
 
-  .edu-item { margin-bottom: 0.85rem; }
-  .edu-school { font-weight: 600; font-size: 0.85rem; color: var(--text); }
-  .edu-degree { font-size: 0.78rem; color: var(--muted); line-height: 1.4; }
-  .edu-date { font-size: 0.7rem; color: var(--coral); font-weight: 600; margin-top: 2px; }
+				<div class="exp-section">
+					<span class="exp-date">May – Jul 2023</span>
+					<h3 style="margin:0 0 2px;">Legal Translator (Spanish)</h3>
+					<p style="margin:0 0 0.5em; color:#888; font-size:0.9em;">Holy Cross Ministries · Salt Lake City, UT</p>
+					<ul class="exp-bullets">
+						<li>Translated legal documents including birth certificates and sworn testimonies</li>
+						<li>Researched legal terminology for accuracy and cultural adaptation</li>
+					</ul>
+				</div>
+			</section>
 
-  /* CONTACT FOOTER */
-  .contact-footer {
-    background: #1c1917; border-radius: 20px;
-    padding: 2rem 2.5rem; margin-top: 2rem;
-    display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
-  }
-  .cf-title { font-family: 'Fraunces', serif; font-size: 1.4rem; font-style: italic; color: #fef3c7; margin-bottom: 0.25rem; }
-  .cf-sub { font-size: 0.8rem; color: #a8a29e; }
-  .cf-links { display: flex; gap: 10px; flex-wrap: wrap; }
-  .cf-btn { padding: 0.55rem 1.25rem; border-radius: 20px; font-size: 0.82rem; font-weight: 600; text-decoration: none; transition: opacity 0.2s; }
-  .cf-btn:hover { opacity: 0.85; }
-  .cf-main { background: var(--coral); color: #fff; }
-  .cf-sec { background: #292524; color: #e7e5e4; }
+			<!-- Projects -->
+			<section id="projects">
+				<h2>Projects</h2>
+				<div class="proj-grid">
+					<a class="proj-card" href="projects.html#case-studies">
+						<div class="proj-emoji">📚</div>
+						<h4>Advanced Translation Technology</h4>
+						<p>TMS evaluation for a game studio and a custom NMT engine pilot for patent translation (EN→ES).</p>
+						<span class="proj-link">View projects →</span>
+					</a>
+					<a class="proj-card" href="projects.html#games-localization">
+						<div class="proj-emoji">🕹️</div>
+						<h4>Games Localization</h4>
+						<p>Localized game projects from English into Spanish, covering UI strings, game mechanics, and in-game content.</p>
+						<span class="proj-link">View projects →</span>
+					</a>
+				</div>
+				<ul class="actions">
+					<li><a href="projects.html" class="button">Full Projects Page</a></li>
+				</ul>
+			</section>
 
-  @media (max-width: 680px) {
-    .two-col { grid-template-columns: 1fr; }
-    .stats-grid { grid-template-columns: repeat(2, 1fr); }
-    .hero-inner { flex-direction: column; gap: 1rem; }
-    .hero-photo { margin-top: -4rem; align-self: center; }
-  }
-</style>
-</head>
-<body>
+			<!-- Education -->
+			<section id="education">
+				<h2>Education</h2>
+				<div class="table-wrapper">
+					<table>
+						<tbody>
+							<tr>
+								<td><strong>Middlebury Institute of International Studies</strong><br/><span style="font-size:0.85em;color:#777;">M.A. in Translation and Localization Management</span></td>
+								<td style="color:var(--coral);font-weight:600;white-space:nowrap;">2025 – 2026</td>
+							</tr>
+							<tr>
+								<td><strong>Brigham Young University</strong><br/><span style="font-size:0.85em;color:#777;">B.A. in Spanish Translation · Minor in Localization</span></td>
+								<td style="color:var(--coral);font-weight:600;white-space:nowrap;">2020 – 2024</td>
+							</tr>
+							<tr>
+								<td><strong>Ensign College</strong><br/><span style="font-size:0.85em;color:#777;">A.S. in Integrated Studies · Certificate in Global Supply Chain</span></td>
+								<td style="color:var(--coral);font-weight:600;white-space:nowrap;">2018 – 2020</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</section>
 
-<nav>
-  <div class="nav-logo">My Professional Portfolio</div>
-  <ul class="nav-links">
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="projects.html">Projects</a></li>
-    <li><a href="#education">Education</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-</nav>
+			<!-- Contact -->
+			<section id="contact">
+				<h2>Get In Touch</h2>
+				<p>Open to localization management and project coordination roles. Feel free to reach out!</p>
+				<div class="row">
+					<div class="col-8 col-12-small">
+						<ul class="labeled-icons">
+							<li>
+								<h3 class="icon solid fa-envelope"><span class="label">Email</span></h3>
+								<a href="mailto:leonardo.cab96@gmail.com">leonardo.cab96@gmail.com</a>
+							</li>
+							<li>
+								<h3 class="icon solid fa-phone"><span class="label">Phone</span></h3>
+								385-285-4428
+							</li>
+							<li>
+								<h3 class="icon solid fa-home"><span class="label">Location</span></h3>
+								Monterey, CA
+							</li>
+						</ul>
+					</div>
+				</div>
+			</section>
 
-<div class="hero">
-  <img class="hero-banner" src="https://leonardocab96-sketch.github.io/leonardoportfolio/banner.jpg" alt="Monterey Bay coastline">
-  <div class="hero-banner-overlay"></div>
-  <div class="hero-card">
-    <div class="hero-inner">
-      <img class="hero-photo" src="https://leonardocab96-sketch.github.io/leonardoportfolio/profile_pic.jpg" alt="Leonardo Cabrera">
-      <div class="hero-info">
-        <div class="hero-name">Leonardo <span>Cabrera</span></div>
-        <div class="hero-role">Translation & Localization Manager · Monterey, CA</div>
-        <div class="hero-tagline">Connecting people and ideas across languages, making every word land with precision and purpose.</div>
-        <div class="hero-lang-row">
-          <span class="lang-pill lp-es">🇪🇸 Spanish (Native)</span>
-          <span class="lang-pill lp-en">🇺🇸 English (Fluent)</span>
-        </div>
-        <div class="hero-contacts">
-          <a class="hero-contact-link" href="mailto:leonardo.cab96@gmail.com">✉ leonardo.cab96@gmail.com</a>
-          <a class="hero-contact-link" href="tel:3852854428">📞 385-285-4428</a>
-          <a class="hero-contact-link" href="https://www.linkedin.com/in/leonardo-cabrera" target="_blank">🔗 LinkedIn</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+		</div>
 
-<div class="stats-section">
-  <div class="stats-grid">
-    <div class="stat-box">
-      <div class="stat-num">6+</div>
-      <div class="stat-label">Languages supported</div>
-    </div>
-    <div class="stat-box">
-      <div class="stat-num">20–25</div>
-      <div class="stat-label">Daily requests handled</div>
-    </div>
-    <div class="stat-box">
-      <div class="stat-num">4</div>
-      <div class="stat-label">Roles in localization</div>
-    </div>
-    <div class="stat-box">
-      <div class="stat-num">M.A.</div>
-      <div class="stat-label">TLM in progress</div>
-    </div>
-  </div>
-</div>
+		<!-- Footer -->
+		<footer id="footer">
+			<div class="inner">
+				<ul class="icons">
+					<li><a href="https://www.linkedin.com/in/leonardo-cabrera" class="icon brands fa-linkedin" target="_blank"><span class="label">LinkedIn</span></a></li>
+					<li><a href="mailto:leonardo.cab96@gmail.com" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+				</ul>
+				<ul class="copyright">
+					<li>&copy; Leonardo Cabrera</li>
+					<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+				</ul>
+			</div>
+		</footer>
 
-<div class="main">
-  <div class="two-col">
+		<!-- Scripts -->
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/jquery.poptrox.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
 
-    <div>
-      <h2 class="section-heading" id="experience">Experience</h2>
-      <div class="exp-list">
-
-        <div class="exp-card" style="--accent: #e8522a;">
-          <div class="exp-top">
-            <div>
-              <div class="exp-title">Language Coordinator</div>
-              <div class="exp-company">The Church of Jesus Christ of Latter-day Saints · Salt Lake City, UT</div>
-            </div>
-            <span class="exp-date">Nov 2024 – Aug 2025</span>
-          </div>
-          <ul class="exp-bullets">
-            <li>Managed multilingual translation workflows across Spanish, Kekchi, Guaraní, Arabic, and Persian</li>
-            <li>Assigned and tracked 20–25 translation requests daily using Plunet TMS</li>
-            <li>Coordinated vendor assignments through WorldServer</li>
-            <li>Recruited and scheduled interpreters for live interpretation events</li>
-          </ul>
-        </div>
-
-        <div class="exp-card" style="--accent: #1a7f74;">
-          <div class="exp-top">
-            <div>
-              <div class="exp-title">Translation Project Manager</div>
-              <div class="exp-company">Brigham Young University (BYU Speeches) · Provo, UT</div>
-            </div>
-            <span class="exp-date">May – Aug 2024</span>
-          </div>
-          <ul class="exp-bullets">
-            <li>Coordinated multilingual content workflows across four languages</li>
-            <li>Managed translation teams and tracked project milestones</li>
-            <li>Monitored project status and dependencies using Jira</li>
-            <li>Communicated timelines and goals to stakeholders</li>
-          </ul>
-        </div>
-
-        <div class="exp-card" style="--accent: #d97706;">
-          <div class="exp-top">
-            <div>
-              <div class="exp-title">Spanish Translator</div>
-              <div class="exp-company">Brigham Young University (BYU Speeches) · Provo, UT</div>
-            </div>
-            <span class="exp-date">Sep 2023 – Apr 2024</span>
-          </div>
-          <ul class="exp-bullets">
-            <li>Translated speeches and forum content using Trados Studio (Level 2 Certified)</li>
-            <li>Produced multilingual audio content with ElevenLabs AI voiceover</li>
-            <li>Edited recordings in Adobe Audition and GarageBand; published via WordPress & YouTube</li>
-          </ul>
-        </div>
-
-        <div class="exp-card" style="--accent: #c026d3;">
-          <div class="exp-top">
-            <div>
-              <div class="exp-title">Legal Translator (Spanish)</div>
-              <div class="exp-company">Holy Cross Ministries · Salt Lake City, UT</div>
-            </div>
-            <span class="exp-date">May – Jul 2023</span>
-          </div>
-          <ul class="exp-bullets">
-            <li>Translated legal documents including birth certificates and sworn testimonies</li>
-            <li>Researched legal terminology for accuracy and cultural adaptation</li>
-          </ul>
-        </div>
-
-      </div>
-    </div>
-
-    <div>
-      <h2 class="section-heading">Tools</h2>
-      <div class="sidebar-card" style="margin-bottom: 1rem;">
-        <div class="tool-chips">
-          <span class="tool-chip tc-a">Trados Studio ✦ L2</span>
-          <span class="tool-chip tc-b">Phrase</span>
-          <span class="tool-chip tc-a">WorldServer</span>
-          <span class="tool-chip tc-c">Plunet</span>
-          <span class="tool-chip tc-d">Jira</span>
-          <span class="tool-chip tc-b">Trello</span>
-          <span class="tool-chip tc-e">ElevenLabs</span>
-          <span class="tool-chip tc-a">Adobe Audition</span>
-          <span class="tool-chip tc-c">WordPress</span>
-          <span class="tool-chip tc-d">YouTube Studio</span>
-          <span class="tool-chip tc-b">GarageBand</span>
-          <span class="tool-chip tc-e">Unreal Engine</span>
-        </div>
-      </div>
-
-      <h2 class="section-heading">Skills</h2>
-      <div class="sidebar-card" style="margin-bottom: 1rem;">
-        <div class="tool-chips">
-          <span class="tool-chip tc-a">Localization PM</span>
-          <span class="tool-chip tc-b">Vendor Coordination</span>
-          <span class="tool-chip tc-c">Quality Assurance</span>
-          <span class="tool-chip tc-d">Interpretation Coordination</span>
-          <span class="tool-chip tc-e">MT Post-editing</span>
-          <span class="tool-chip tc-a">CAT Tools</span>
-          <span class="tool-chip tc-b">Multilingual Workflows</span>
-          <span class="tool-chip tc-c">Process Documentation</span>
-          <span class="tool-chip tc-d">A/V Localization</span>
-          <span class="tool-chip tc-e">HTML · CSS · Python</span>
-        </div>
-      </div>
-
-      <h2 class="section-heading" id="education">Education</h2>
-      <div class="sidebar-card">
-        <div class="edu-item">
-          <div class="edu-school">Middlebury Institute of International Studies</div>
-          <div class="edu-degree">M.A. in Translation and Localization Management</div>
-          <div class="edu-date">Sep 2025 – May 2026</div>
-        </div>
-        <div class="edu-item">
-          <div class="edu-school">Brigham Young University</div>
-          <div class="edu-degree">B.A. in Spanish Translation · Minor in Localization</div>
-          <div class="edu-date">Sep 2020 – Aug 2024</div>
-        </div>
-        <div class="edu-item" style="margin-bottom:0;">
-          <div class="edu-school">Ensign College</div>
-          <div class="edu-degree">A.S. in Integrated Studies · Certificate in Global Supply Chain</div>
-          <div class="edu-date">Sep 2018 – May 2020</div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-  <div class="contact-footer" id="contact">
-    <div>
-      <div class="cf-title">Let's work together ✦</div>
-      <div class="cf-sub">Open to localization management and project coordination roles</div>
-    </div>
-    <div class="cf-links">
-      <a class="cf-btn cf-main" href="mailto:leonardo.cab96@gmail.com">Email me</a>
-      <a class="cf-btn cf-sec" href="https://www.linkedin.com/in/leonardo-cabrera" target="_blank">LinkedIn</a>
-    </div>
-  </div>
-
-</div>
-
-</body>
+	</body>
 </html>
