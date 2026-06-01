@@ -108,6 +108,51 @@
   @media (max-width: 600px) {
     .slide-dots { display: none; }
   }
+
+  /* SECTION DIVIDER */
+  .section-divider {
+    max-width: 860px; margin: 0.5rem auto 2rem; padding: 0 2rem;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .section-divider h2 {
+    font-family: 'Fraunces', serif; font-size: 1.4rem; font-weight: 700;
+    color: var(--text); white-space: nowrap;
+  }
+  .section-divider h2 span { color: var(--coral); }
+  .section-divider::after {
+    content: ''; flex: 1; height: 1.5px; background: var(--border);
+  }
+
+  /* GAME CARDS GRID */
+  .games-grid {
+    max-width: 860px; margin: 0 auto 4rem; padding: 0 2rem;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+  }
+  .game-card {
+    background: #fff; border-radius: 16px; border: 1.5px solid var(--border);
+    overflow: hidden; transition: box-shadow 0.2s, transform 0.15s;
+  }
+  .game-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.08); transform: translateY(-2px); }
+  .game-video {
+    width: 100%; display: block;
+    background: #0f172a; max-height: 220px; object-fit: cover;
+  }
+  .game-info { padding: 1.1rem 1.25rem; }
+  .game-title { font-weight: 600; font-size: 0.95rem; color: var(--text); margin-bottom: 4px; }
+  .game-meta { font-size: 0.75rem; color: var(--muted); margin-bottom: 0.6rem; }
+  .game-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+  .game-tag {
+    font-size: 0.68rem; font-weight: 600; padding: 3px 9px;
+    border-radius: 20px; border: 1.5px solid transparent;
+  }
+  .gt-a { background: var(--coral-lt); color: var(--coral); border-color: #fdc5b0; }
+  .gt-b { background: #e0f5f2; color: #1a7f74; border-color: #99d9d3; }
+  .gt-c { background: #eff6ff; color: #2563eb; border-color: #bfdbfe; }
+
+  @media (max-width: 600px) {
+    .slide-dots { display: none; }
+    .games-grid { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
@@ -219,6 +264,30 @@
     <div class="download-row">
       <span class="download-note">View the full proposal</span>
       <a class="download-btn" href="https://leonardocab96-sketch.github.io/leonardoportfolio/MT_Pilot_Project_Lessons_Learned.pdf" target="_blank">Download PDF ↗</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- GAMES LOCALIZATION SECTION -->
+<div class="section-divider">
+  <h2>🕹️ Games <span>Localization</span></h2>
+</div>
+
+<div class="games-grid">
+
+  <div class="game-card">
+    <video class="game-video" controls preload="metadata">
+      <source src="https://leonardocab96-sketch.github.io/leonardoportfolio/JChinese_Chess_default.mp4" type="video/mp4">
+    </video>
+    <div class="game-info">
+      <div class="game-title">Chinese Chess (Janggi)</div>
+      <div class="game-meta">Game localization · English → Spanish</div>
+      <div class="game-tags">
+        <span class="game-tag gt-a">ENG → SPA</span>
+        <span class="game-tag gt-b">UI Localization</span>
+        <span class="game-tag gt-c">Game Strings</span>
+      </div>
     </div>
   </div>
 
