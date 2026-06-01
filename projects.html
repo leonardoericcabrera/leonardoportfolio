@@ -18,18 +18,41 @@
   html { scroll-behavior: smooth; }
   body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg); color: var(--text); }
 
+
   /* NAV */
   nav {
-    position: sticky; top: 0; z-index: 100;
-    background: rgba(250,250,249,0.92); backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--border);
-    padding: 0.75rem 2rem;
+    background: #0f1e3c;
+    position: sticky; top: 0; z-index: 200;
+    padding: 0 3rem; height: 60px;
     display: flex; align-items: center; justify-content: space-between;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.25);
   }
-  .nav-logo { font-family: 'Fraunces', serif; font-size: 1.05rem; font-weight: 700; color: var(--coral); text-decoration: none; }
-  .nav-links { display: flex; gap: 1.5rem; list-style: none; }
-  .nav-links a { text-decoration: none; font-size: 0.875rem; font-weight: 500; color: var(--muted); transition: color 0.2s; }
-  .nav-links a:hover, .nav-links a.active { color: var(--coral); }
+  .nav-logo { font-family: 'Fraunces', serif; font-size: 1.1rem; font-weight: 700; color: #c9a84c; text-decoration: none; }
+  .nav-links { display: flex; align-items: center; list-style: none; height: 100%; gap: 0; }
+  .nav-links > li { height: 100%; position: relative; }
+  .nav-links > li > a {
+    display: flex; align-items: center; height: 100%; gap: 5px;
+    padding: 0 1.1rem; font-size: 0.8rem; font-weight: 500;
+    color: rgba(255,255,255,0.65); text-decoration: none;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    transition: color 0.2s; border-bottom: 2px solid transparent;
+  }
+  .nav-links > li > a:hover,
+  .nav-links > li > a.active,
+  .nav-links > li:hover > a { color: #c9a84c; border-bottom-color: #c9a84c; }
+  .nav-arrow { font-size: 0.55rem; opacity: 0.6; transition: transform 0.2s; }
+  .nav-links > li:hover .nav-arrow { transform: rotate(180deg); }
+  .dropdown {
+    display: none; position: absolute; top: 100%; left: 0;
+    background: #162548; border: 1px solid rgba(201,168,76,0.2);
+    border-top: 2px solid #c9a84c; border-radius: 0 0 10px 10px;
+    min-width: 240px; box-shadow: 0 8px 24px rgba(0,0,0,0.3); padding: 6px 0;
+  }
+  .nav-links > li:hover .dropdown { display: block; }
+  .dropdown a { display: block; padding: 10px 18px; font-size: 0.8rem; font-weight: 500; color: rgba(255,255,255,0.65); text-decoration: none; transition: color 0.15s, background 0.15s; }
+  .dropdown a:hover { color: #c9a84c; background: rgba(201,168,76,0.08); }
+  .dropdown .dd-label { font-weight: 600; color: rgba(255,255,255,0.85); }
+  .dropdown .dd-sub { font-size: 0.68rem; color: rgba(255,255,255,0.35); display: block; margin-top: 1px; }
 
   /* PAGE HEADER */
   .page-header { max-width: 860px; margin: 2.5rem auto 1.5rem; padding: 0 2rem; }
@@ -184,22 +207,23 @@
 <body>
 
 <nav>
-  <a class="nav-logo" href="index.html">My Professional Portfolio</a>
+  <a class="nav-logo" href="index.html">LC ✦</a>
   <ul class="nav-links">
     <li><a href="index.html#experience">Experience</a></li>
     <li>
       <a href="projects.html" class="active">Projects <span class="nav-arrow">▾</span></a>
       <div class="dropdown">
         <a href="projects.html#case-studies">
-          📚 Advanced Translation Technology
+          <span class="dd-label">📚 Advanced Translation Technology</span>
           <span class="dd-sub">TMS Evaluation · NMT Pilot</span>
         </a>
         <a href="projects.html#games-localization">
-          🕹️ Games Localization
+          <span class="dd-label">🕹️ Games Localization</span>
           <span class="dd-sub">ENG → SPA game projects</span>
         </a>
       </div>
     </li>
+    <li><a href="index.html#skills">Skills</a></li>
     <li><a href="index.html#education">Education</a></li>
     <li><a href="index.html#contact">Contact</a></li>
   </ul>
